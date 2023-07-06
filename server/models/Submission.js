@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const submissionSchema = new mongoose.Schema({
+  YourName:String,
   currentCountry: String,
             from: String,
             to: String,

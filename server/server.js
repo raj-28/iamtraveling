@@ -6,12 +6,13 @@ const bodyParser = require('body-parser')
 
 const app = express();
 app.use(bodyParser.json())
-// app.use(cors({origin: 'http://localhost:5000'}));
 const port = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({origin:'http://localhost:5000'}));
+// app.use(cors());
 app.use(express.json());
+app.use(cors({origin: 'http://localhost:3000'}));
+
 
 // Connect to the database
 mongoose.connect('mongodb://rajkp:rajkp@ac-tztvajn-shard-00-00.r2wovh1.mongodb.net:27017,ac-tztvajn-shard-00-01.r2wovh1.mongodb.net:27017,ac-tztvajn-shard-00-02.r2wovh1.mongodb.net:27017/?replicaSet=atlas-ow5jdw-shard-0&ssl=true&authSource=admin', {
@@ -25,8 +26,8 @@ db.once('open', () => {
 });
 
 // Routes
-const submissionsRouter = require('./routes/Submission');
-app.use('/api/submissions', submissionsRouter);
+const submissionsRouter = require('./routes/Submission.js');
+app.use('/api/submission', submissionsRouter);
 
 // Start the server
 app.listen(port, () => {

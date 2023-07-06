@@ -1,16 +1,15 @@
-
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const TravelForm = () => {
   const [formData, setFormData] = useState({
-    currentCountry: '',
-    from: '',
-    to: '',
-    journeyDate: '',
-    returnDate: '',
-    airlines: '',
-    contactNumber: '',
+    YourName: "",
+    currentCountry: "",
+    from: "",
+    to: "",
+    journeyDate: "",
+    returnDate: "",
+    airlines: "",
+    contactNumber: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -38,37 +37,37 @@ const TravelForm = () => {
     } else {
       try {
         // Send the form data to the backend
-        const response = await fetch('http://localhost:5000/api/submission', {
-          method: 'POST',
+        const response = await fetch("http://localhost:5000/api/submissions", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
         });
 
         if (response.ok) {
           // Form submitted successfully
-          console.log('Form submitted successfully');
+          console.log("Form submitted successfully");
           // Reset the form after submission
           setFormData({
-            currentCountry: '',
-            from: '',
-            to: '',
-            journeyDate: '',
-            returnDate: '',
-            airlines: '',
-            contactNumber: '',
+            YourName: "",
+            currentCountry: "",
+            from: "",
+            to: "",
+            journeyDate: "",
+            returnDate: "",
+            airlines: "",
+            contactNumber: "",
           });
           setErrors({});
         } else {
           // Error occurred while submitting the form
-          alert('Error occurred while submitting the form');
-          
+          alert("Error occurred while submitting the form");
 
           // Handle the error as needed
         }
       } catch (error) {
-        alert('Error occurred while submitting the form', error);
+        alert("Error occurred while submitting the form", error);
         console.log(error);
         // Handle the error as needed
       }
@@ -78,23 +77,26 @@ const TravelForm = () => {
   const validateForm = () => {
     const errors = {};
     // Add your validation rules for the entire form
-    if (formData.currentCountry.trim() === '') {
-      errors.currentCountry = 'Current country is required';
+    if (formData.YourName.trim() === "") {
+      errors.YourName = "You dont have name weird";
     }
-    if (formData.from.trim() === '') {
-      errors.from = 'From field is required';
+    if (formData.currentCountry.trim() === "") {
+      errors.currentCountry = "Current country is required";
     }
-    if (formData.to.trim() === '') {
-      errors.to = 'To field is required';
+    if (formData.from.trim() === "") {
+      errors.from = "From field is required";
     }
-    if (formData.journeyDate.trim() === '') {
-      errors.journeyDate = 'Journey date is required';
+    if (formData.to.trim() === "") {
+      errors.to = "To field is required";
     }
-    if (formData.airlines.trim() === '') {
-      errors.airlines = 'Airlines field is required';
+    if (formData.journeyDate.trim() === "") {
+      errors.journeyDate = "Journey date is required";
     }
-    if (formData.contactNumber.trim() === '') {
-      errors.contactNumber = 'Contact number is required';
+    if (formData.airlines.trim() === "") {
+      errors.airlines = "Airlines field is required";
+    }
+    if (formData.contactNumber.trim() === "") {
+      errors.contactNumber = "Contact number is required";
     }
     // Add more validations based on your requirements
     return errors;
@@ -104,53 +106,58 @@ const TravelForm = () => {
     const fieldErrors = {};
     // Add your validation rules for each field
     switch (fieldName) {
-      case 'currentCountry':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'Current country is required';
+      case "YourName":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "You Dont Have Name Weird";
         }
         break;
-      case 'from':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'From field is required';
+      case "currentCountry":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "Current country is required";
         }
         break;
-      case 'to':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'To field is required';
+      case "from":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "From field is required";
         }
         break;
-      case 'journeyDate':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'Journey date is required';
+      case "to":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "To field is required";
+        }
+        break;
+      case "journeyDate":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "Journey date is required";
         } else {
           const currentDate = new Date();
           const selectedDate = new Date(value);
           if (selectedDate <= currentDate) {
-            fieldErrors[fieldName] = 'Journey date should not be in the past'
+            fieldErrors[fieldName] = "Journey date should not be in the past";
           }
         }
         break;
-      case 'returnDate':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'Journey date is required';
+      case "returnDate":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "Journey date is required";
         } else {
           const currentDate = new Date();
           const selectedDate = new Date(value);
           if (selectedDate <= currentDate) {
-            fieldErrors[fieldName] = 'Journey date should not be in the past'
+            fieldErrors[fieldName] = "Journey date should not be in the past";
           }
         }
         break;
-      case 'airlines':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'Airlines field is required';
+      case "airlines":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "Airlines field is required";
         }
         break;
-      case 'contactNumber':
-        if (value.trim() === '') {
-          fieldErrors[fieldName] = 'Contact number is required';
+      case "contactNumber":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "Contact number is required";
         } else if (!/^\d+$/.test(value)) {
-          fieldErrors[fieldName] = 'Contact Number Should contain Only Numbers'
+          fieldErrors[fieldName] = "Contact Number Should contain Only Numbers";
         }
         break;
       // Add more field-specific validations
@@ -160,11 +167,29 @@ const TravelForm = () => {
     return fieldErrors;
   };
 
-  const countries = ['India', 'Canada', 'Australia', 'UK', 'USA']
+  const countries = ["India", "Canada", "Australia", "UK", "USA"];
   return (
     <div className="max-w-md mx-auto mt-8 bg-white p-6 rounded-md shadow-md">
       <h2 className="text-2xl mb-6">Travel Form</h2>
       <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label htmlFor="yourName" className="">
+            Your-Name
+          </label>
+          <input
+            type="text"
+            id="YourName"
+            name="YourName"
+            value={formData.YourName}
+            onChange={handleChange}
+            className={`w-full p-2 border ${
+              errors.YourName ? "border-red-500" : "border-gray-300"
+            } rounded`}
+          />
+          {errors.YourName && (
+            <span className="text-red-500 text-sm">{errors.YourName}</span>
+          )}
+        </div>
         <div className="mb-4">
           <label htmlFor="currentCountry" className="block mb-1">
             Current Country:
@@ -175,14 +200,21 @@ const TravelForm = () => {
             name="currentCountry"
             value={formData.currentCountry}
             onChange={handleChange}
-            className={`w-full p-2 border ${errors.currentCountry ? 'border-red-500' : 'border-gray-300'
-              } rounded`}
-          ><option value="">Select Country</option>
+            className={`w-full p-2 border ${
+              errors.currentCountry ? "border-red-500" : "border-gray-300"
+            } rounded`}
+          >
+            <option value="">Select Country</option>
             {countries.map((country) => (
-              <option key={country} value={country}>{country}</option>
-            ))}</select>
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
           {errors.currentCountry && (
-            <span className="text-red-500 text-sm">{errors.currentCountry}</span>
+            <span className="text-red-500 text-sm">
+              {errors.currentCountry}
+            </span>
           )}
         </div>
         <div className="mb-4">
@@ -195,10 +227,13 @@ const TravelForm = () => {
             name="from"
             value={formData.from}
             onChange={handleChange}
-            className={`w-full p-2 border ${errors.from ? 'border-red-500' : 'border-gray-300'
-              } rounded`}
+            className={`w-full p-2 border ${
+              errors.from ? "border-red-500" : "border-gray-300"
+            } rounded`}
           />
-          {errors.from && <span className="text-red-500 text-sm">{errors.from}</span>}
+          {errors.from && (
+            <span className="text-red-500 text-sm">{errors.from}</span>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="to" className="block mb-1">
@@ -210,10 +245,13 @@ const TravelForm = () => {
             name="to"
             value={formData.to}
             onChange={handleChange}
-            className={`w-full p-2 border ${errors.to ? 'border-red-500' : 'border-gray-300'
-              } rounded`}
+            className={`w-full p-2 border ${
+              errors.to ? "border-red-500" : "border-gray-300"
+            } rounded`}
           />
-          {errors.to && <span className="text-red-500 text-sm">{errors.to}</span>}
+          {errors.to && (
+            <span className="text-red-500 text-sm">{errors.to}</span>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="journeyDate" className="block mb-1">
@@ -225,8 +263,9 @@ const TravelForm = () => {
             name="journeyDate"
             value={formData.journeyDate}
             onChange={handleChange}
-            className={`w-full p-2 border ${errors.journeyDate ? 'border-red-500' : 'border-gray-300'
-              } rounded`}
+            className={`w-full p-2 border ${
+              errors.journeyDate ? "border-red-500" : "border-gray-300"
+            } rounded`}
           />
           {errors.journeyDate && (
             <span className="text-red-500 text-sm">{errors.journeyDate}</span>
@@ -255,13 +294,13 @@ const TravelForm = () => {
             name="airlines"
             value={formData.airlines}
             onChange={handleChange}
-            className={`w-full p-2 border ${errors.airlines ? 'border-red-500' : 'border-gray-300'
-              } rounded`}
+            className={`w-full p-2 border ${
+              errors.airlines ? "border-red-500" : "border-gray-300"
+            } rounded`}
           />
-          {errors.airlines
-            && (
-              <span className="text-red-500 text-sm">{errors.airlines}</span>
-            )}
+          {errors.airlines && (
+            <span className="text-red-500 text-sm">{errors.airlines}</span>
+          )}
         </div>
         <div className="mb-4">
           <label htmlFor="contactNumber" className="block mb-1">
@@ -273,8 +312,9 @@ const TravelForm = () => {
             name="contactNumber"
             value={formData.contactNumber}
             onChange={handleChange}
-            className={`w-full p-2 border ${errors.contactNumber ? 'border-red-500' : 'border-gray-300'
-              } rounded`}
+            className={`w-full p-2 border ${
+              errors.contactNumber ? "border-red-500" : "border-gray-300"
+            } rounded`}
           />
           {errors.contactNumber && (
             <span className="text-red-500 text-sm">{errors.contactNumber}</span>

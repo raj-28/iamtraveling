@@ -1,62 +1,48 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
-const SubmissionForm = () => {
-  const [formData, setFormData] = useState({
-    currentCountry: '',
-    fromCountry: '',
-    toCountry: '',
-    journeyDate: '',
-    returnDate: '',
-    airlines: '',
-    contactNumber: '',
-  });
-  const [errorMessage, setErrorMessage] = useState('');
+const HomePage = () => {
+  const [submittedData, setSubmittedData] = useState([]);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const fetchData = async () => {
     try {
-      const response = await axios.post('/api/submissions', formData);
-      console.log(response.data); // Handle the response data as needed
-      // Optionally, reset the form fields
-      setFormData({
-        currentCountry: '',
-        fromCountry: '',
-        toCountry: '',
-        journeyDate: '',
-        returnDate: '',
-        airlines: '',
-        contactNumber: '',
-      });
-      setErrorMessage('');
+      const response = await fetch('http://localhost:5000/api/submissions');
+      if (response.ok) {
+        const data = await response.json();
+        setSubmittedData(data);
+      } else {
+        console.log('Failed to fetch form data');
+      }
     } catch (error) {
-      console.error(error);
-      setErrorMessage('An error occurred. Please try again.'); // Handle the error message display as needed
+      console.log('Failed to fetch form data', error);
     }
   };
 
   return (
-    <div>
-      <h2>Submission Form</h2>
-      {errorMessage && <p>{errorMessage}</p>}
-      <form onSubmit={handleSubmit}>
-        {/* Form fields */}
-        <input type="text" name="currentCountry" value={formData.currentCountry} onChange={handleChange} placeholder="Current Country" required />
-        <input type="text" name="fromCountry" value={formData.fromCountry} onChange={handleChange} placeholder="From Country" required />
-        <input type="text" name="toCountry" value={formData.toCountry} onChange={handleChange} placeholder="To Country" required />
-        <input type="date" name="journeyDate" value={formData.journeyDate} onChange={handleChange} placeholder="Journey Date" required />
-        <input type="date" name="returnDate" value={formData.returnDate} onChange={handleChange} placeholder="Return Date" />
-        <input type="text" name="airlines" value={formData.airlines} onChange={handleChange} placeholder="Airlines" required />
-        <input type="text" name="contactNumber" value={formData.contactNumber} onChange={handleChange} placeholder="Contact Number" required />
-
-        <button type="submit">Submit</button>
-      </form>
+    <div className="container mx-auto p-8">
+      <h1 className="text-2xl font-bold mb-6">Home Page</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {submittedData.map((data) => (
+          <div
+            key={data._id}
+            className="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition duration-300"
+          >
+            <h2 className="text-xl font-bold mb-2">Current Country: {data.currentCountry}</h2>
+            <p className='mb-1'>Name: {data.YourName}</p>
+            <p className="mb-1">From: {data.from}</p>
+            <p className="mb-1">To: {data.to}</p>
+            <p className="mb-1">Journey Date: {data.journeyDate}</p>
+            <p className="mb-1">Return Date: {data.returnDate}</p>
+            <p className="mb-1">Airlines: {data.airlines}</p>
+            <p className="mb-1">Contact Number: {data.contactNumber}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default SubmissionForm;
+export default HomePage;
