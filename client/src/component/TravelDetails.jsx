@@ -181,8 +181,8 @@ const TravelForm = () => {
 
   const countries = ["India", "Canada", "Australia", "UK", "USA"];
   return (
-    <div className="bg-lime-900		max-w-md mx-auto mt-8 bg-white p-6 rounded-md shadow-md">
-      <h2 className="text-2xl mb-6">Travel Form</h2>
+    <div className="bg-cyan-700	max-w-md mx-auto mt-8  p-6 rounded-md shadow-md">
+      <h2 className="text-2xl mb-6 font-extrabold">Travel Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="yourName" className="">
