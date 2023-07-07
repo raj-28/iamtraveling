@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify';
 
 const TravelForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     YourName: "",
     currentCountry: "",
@@ -47,7 +50,14 @@ const TravelForm = () => {
 
         if (response.ok) {
           // Form submitted successfully
+          
+
           console.log("Form submitted successfully");
+          //Redirect to home Page after 3 Seconds
+          setTimeout(()=>{
+            navigate('/')
+          },2500)
+
           // Reset the form after submission
           setFormData({
             YourName: "",
@@ -58,7 +68,9 @@ const TravelForm = () => {
             returnDate: "",
             airlines: "",
             contactNumber: "",
+            submitted:true,
           });
+          
           setErrors({});
         } else {
           // Error occurred while submitting the form
@@ -320,13 +332,16 @@ const TravelForm = () => {
             <span className="text-red-500 text-sm">{errors.contactNumber}</span>
           )}
         </div>
-        <div>
+        <div className="grid grid-cols-3 gap-3">
           <button
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
           >
             Submit
           </button>
+          {formData.submitted && (
+            <p className="text-green-500 mt-2">Travel Saved...!!!</p>
+          )}
         </div>
       </form>
     </div>
