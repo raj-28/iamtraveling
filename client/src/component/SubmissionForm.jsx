@@ -14,7 +14,7 @@ const HomePage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://iamtraveling.vercel.app/api/submissions");
+      const response = await fetch("http://localhost:5000/api/submissions");
       if (response.ok) {
         const data = await response.json();
         const filteredData = data.filter((data)=>{

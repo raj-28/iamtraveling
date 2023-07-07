@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 // Middleware
 // app.use(cors());
 app.use(express.json());
-app.use(cors({origin: 'https://triptravel.vercel.app'}));
+app.use(cors({origin: 'http://localhost:3000'}));
 
 
 // Connect to the database
@@ -27,7 +27,7 @@ db.once('open', () => {
 
 // Routes
 const submissionsRouter = require('./routes/Submission.js');
-app.use('/api/submission', submissionsRouter);
+app.use('/api/submissions', submissionsRouter);
 
 // Start the server
 app.listen(port, () => {
