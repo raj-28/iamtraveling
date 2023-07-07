@@ -27,7 +27,7 @@ db.once('open', () => {
 
 // Routes
 const submissionsRouter = require('./routes/Submission.js');
-app.use('/api/submission', submissionsRouter);
+app.use('/api/submissions', submissionsRouter);
 
 // Start the server
 app.listen(port, () => {
