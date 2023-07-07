@@ -9,10 +9,9 @@ app.use(bodyParser.json())
 const port = process.env.PORT || 5000;
 
 // Middleware
-// app.use(cors());
 app.use(express.json());
 // Add frontend path for cross Origin
-app.use(cors({origin: 'https://triptravel.vercel.app'}));
+// app.use(cors({origin: 'https://triptravel.vercel.app'}));
 
 
 // Connect to the database
@@ -26,9 +25,11 @@ db.once('open', () => {
   console.log('Connected to the database');
 });
 
+app.use(cors());
+
 // Routes
 const submissionsRouter = require('./routes/Submission.js');
-app.use('https://iamtraveling.vercel.app/api/submissions', submissionsRouter);
+app.use('/api/submissions', submissionsRouter);
 
 // Start the server
 app.listen(port, () => {
