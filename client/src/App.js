@@ -4,8 +4,10 @@ import './App.css';
 import Navbar from './component/Navbar';
 import TravelForm from './component/TravelDetails';
 import Home from './component/Home';
+import { Analytics } from '@vercel/analytics/react';
 import { inject } from '@vercel/analytics';
  
+
 inject();
 // import { Router } from 'react-router-dom';
 
@@ -19,6 +21,7 @@ function App() {
           <Route path='/' element={<Home/>} />
           <Route path='iamtraveling' element={<TravelForm />} />
         </Routes>
+        <Analytics/>
       </div>
     
 
