@@ -73,7 +73,7 @@ const HomePage = () => {
           name="from"
           value={filterOptions.from}
           onChange={handleFilterChange}
-          className="border border-gray-300 rounded p-2"
+          className="w-full px-4 border border-gray-300 rounded p-2"
         >
           <option value="">All</option>
           {/* Add options for available "from countries" */}
@@ -89,7 +89,7 @@ const HomePage = () => {
           name="to"
           value={filterOptions.to}
           onChange={handleFilterChange}
-          className="border border-gray-300 rounded p-2"
+          className="w-full px-4 border border-gray-300 rounded p-2"
         >
           <option value="">All</option>
           {/* Add options for available "from countries" */}
@@ -105,7 +105,7 @@ const HomePage = () => {
           name="currentCountry"
           value={filterOptions.currentCountry}
           onChange={handleFilterChange}
-          className="border border-gray-300 rounded p-2"
+          className="w-full px-4 border border-gray-300 rounded p-2"
         >
           <option value="">All</option>
           {/* Add options for available "from countries" */}
