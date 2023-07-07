@@ -25,6 +25,7 @@ const HomePage = () => {
         data.currentCountry !== filterOptions.currentCountry)
           ){return false;} return true;
         })
+        filteredData.sort((a,b)=> new Date(a.journeyDate)-new Date(b.journeyDate))
         setSubmittedData(filteredData);
       } else {
         console.log("Failed to fetch form data");
