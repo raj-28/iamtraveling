@@ -28,7 +28,7 @@ db.once('open', () => {
 
 // Routes
 const submissionsRouter = require('./routes/Submission.js');
-app.use('/api/submissions', submissionsRouter);
+app.use('https://iamtraveling.vercel.app/api/submissions', submissionsRouter);
 
 // Start the server
 app.listen(port, () => {
