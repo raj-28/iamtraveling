@@ -4,6 +4,9 @@ import './App.css';
 import Navbar from './component/Navbar';
 import TravelForm from './component/TravelDetails';
 import Home from './component/Home';
+import { inject } from '@vercel/analytics';
+ 
+inject();
 // import { Router } from 'react-router-dom';
 
 function App() {
