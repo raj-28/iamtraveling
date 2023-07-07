@@ -3,11 +3,13 @@ import Menu from './Menu';
 
 function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const logo = require('../static/logo.png');
   return (
     <nav className="bg-gray-400">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 border-b border-solid border-slate-600">
         <div className="flex-shrink-0 font-bold tracking-wider">
-          LOGO
+        <img class="h-10 w-10 self-center" src={logo}  alt="Journying"/>
         </div>
         <div className="hidden md:block">
           <Menu />
