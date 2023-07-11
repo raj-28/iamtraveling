@@ -9,7 +9,7 @@ function Navbar() {
     <nav className="bg-gray-400">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 border-b border-solid border-slate-600">
         <div className="flex-shrink-0 font-bold tracking-wider">
-        <img class="self-center sm:h-40 sm:w-25" src={logo}  alt="Journying"/>
+        <img class="self-center h-40 :w-25" src={logo}  alt="Journying"/>
         </div>
         <div className="hidden md:block">
           <Menu />
