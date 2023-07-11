@@ -62,7 +62,7 @@ const HomePage = () => {
   }
 
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto p-8 ">
       <h1 className="text-2xl font-bold mb-6">Travellers</h1>
       <div className="flex items-center mb-4">
         <label htmlFor="from" className="mr-2">
@@ -116,7 +116,8 @@ const HomePage = () => {
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mx-4" onClick={handleResetFilters}>Reset Filters</button>
 
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {submittedData.map((data) => (
           <div
             key={data._id}
@@ -155,6 +156,7 @@ const HomePage = () => {
         ))}
       </div>
     </div>
+    
   );
 };
 
