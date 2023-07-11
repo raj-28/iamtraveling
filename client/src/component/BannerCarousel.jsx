@@ -30,7 +30,7 @@ const BannerCarousel = ()  =>{
             </div>
             <div>
                 <img src={banner3} className="w-2/3 sm:w-1/2 mx-auto h-64 object-cover rounded-lg" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl font-bold sm:text-4xl">The World is Too big to Explore alone; find your travel mate and conquer it.</div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xl font-bold sm:text-4xl"><b>Only For Students Travelling From Listed Countries </b> </div>
             </div>
         </Carousel>
     )
