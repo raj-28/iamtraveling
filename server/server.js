@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const bodyParser = require('body-parser')
+const cron = require('node-cron');
 
 
 const app = express();
@@ -27,6 +28,10 @@ db.once('open', () => {
 
 app.use(cors());
 
+// Schedule the function to run daily at a specific time
+const deleteExpiredTravelData = require('./deleteExpiredTravelDates')
+cron.schedule('0 0 * * *',deleteExpiredTravelData )
+
 // Routes
 const submissionsRouter = require('./routes/Submission.js');
 app.use('/api/submissions', submissionsRouter);
@@ -35,3 +40,4 @@ app.use('/api/submissions', submissionsRouter);
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
