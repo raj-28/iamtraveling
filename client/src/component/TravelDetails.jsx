@@ -57,7 +57,7 @@ const TravelForm = () => {
           //Redirect to home Page after 3 Seconds
           setTimeout(()=>{
             navigate('/')
-          },2500)
+          },1500)
 
           // Reset the form after submission
           setFormData({
