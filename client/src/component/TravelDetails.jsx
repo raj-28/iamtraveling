@@ -361,11 +361,11 @@ const TravelForm = () => {
             value={formData.instagramprofile}
             onChange={handleChange}
             className={`w-full p-2 border ${
-              errors.contactNumber ? "border-red-500" : "border-gray-300"
+              errors.instagramprofile ? "border-red-500" : "border-gray-300"
             } rounded`}
           />
-          {errors.contactNumber && (
-            <span className="text-red-500 text-sm">{errors.contactNumber}</span>
+          {errors.instagramprofile && (
+            <span className="text-red-500 text-sm">{errors.instagramprofile}</span>
           )}
         </div>
         <div className="grid grid-cols-3 gap-3">
