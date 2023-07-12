@@ -66,7 +66,7 @@ const TravelForm = () => {
             from: "",
             to: "",
             journeyDate: "",
-            returnDate: "",
+            // returnDate: "",
             airlines: "",
             contactNumber: "",
             instagramprofile:"",
@@ -157,17 +157,17 @@ const TravelForm = () => {
           }
         }
         break;
-      case "returnDate":
-        if (value.trim() === "") {
-          fieldErrors[fieldName] = "Journey date is required";
-        } else {
-          const currentDate = new Date();
-          const selectedDate = new Date(value);
-          if (selectedDate <= currentDate) {
-            fieldErrors[fieldName] = "Journey date should not be in the past";
-          }
-        }
-        break;
+      // case "returnDate":
+      //   if (value.trim() === "") {
+      //     fieldErrors[fieldName] = "Journey date is required";
+      //   } else {
+      //     const currentDate = new Date();
+      //     const selectedDate = new Date(value);
+      //     if (selectedDate <= currentDate) {
+      //       fieldErrors[fieldName] = "Journey date should not be in the past";
+      //     }
+      //   }
+      //   break;
       case "airlines":
         if (value.trim() === "") {
           fieldErrors[fieldName] = "Airlines field is required";
@@ -300,7 +300,7 @@ const TravelForm = () => {
         </div>
       {/* Conditionally render the return date field */}
         
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="returnDate" className="block mb-1">
             Return Date (optional):
           </label>
@@ -312,7 +312,7 @@ const TravelForm = () => {
             onChange={handleChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
-        </div>
+        </div> */}
         
         <div className="mb-4">
           <label htmlFor="airlines" className="block mb-1">
