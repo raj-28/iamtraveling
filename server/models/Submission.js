@@ -6,7 +6,7 @@ const submissionSchema = new mongoose.Schema({
             from: String,
             to: String,
             journeyDate: Date,
-            returnDate: Date,
+            // returnDate: Date,
             airlines: String,
             contactNumber: Number,
             instagramprofile: String,
