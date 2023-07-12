@@ -6,9 +6,9 @@ import BannerCarousel from './BannerCarousel'
 const Home = () => {
   return (
     <div>
-      <BannerCarousel/>
-    <HomeData/>
-    {/* <Footer/> */}
+      <BannerCarousel />
+      <HomeData />
+      {/* <Footer/> */}
     </div>
   )
 }

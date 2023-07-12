@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {useNavigate} from 'react-router-dom'
-import {toast} from 'react-toastify';
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const TravelForm = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const TravelForm = () => {
     returnDate: "",
     airlines: "",
     contactNumber: "",
-    instagramprofile:"",
+    instagramprofile: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -51,13 +51,13 @@ const TravelForm = () => {
 
         if (response.ok) {
           // Form submitted successfully
-          
+
 
           console.log("Form submitted successfully");
           //Redirect to home Page after 3 Seconds
-          setTimeout(()=>{
+          setTimeout(() => {
             navigate('/')
-          },1500)
+          }, 1500)
 
           // Reset the form after submission
           setFormData({
@@ -69,10 +69,10 @@ const TravelForm = () => {
             // returnDate: "",
             airlines: "",
             contactNumber: "",
-            instagramprofile:"",
-            submitted:true,
+            instagramprofile: "",
+            submitted: true,
           });
-          
+
           setErrors({});
         } else {
           // Error occurred while submitting the form
@@ -110,8 +110,8 @@ const TravelForm = () => {
       errors.airlines = "Airlines field is required";
     }
     if (formData.contactNumber.trim() === "") {
-      if(formData.instagramprofile.trim() ===""){
-        errors.contactNumber="Please Provide either a contact number or an Instagram Profile"
+      if (formData.instagramprofile.trim() === "") {
+        errors.contactNumber = "Please Provide either a contact number or an Instagram Profile"
       }
       // errors.contactNumber = "Contact number is required";
     }
@@ -186,7 +186,7 @@ const TravelForm = () => {
         } else {
           fieldErrors[fieldName] = null;
         }
-      break;
+        break;
       // Add more field-specific validations
       default:
         break;
@@ -209,9 +209,8 @@ const TravelForm = () => {
             name="YourName"
             value={formData.YourName}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.YourName ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.YourName ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.YourName && (
             <span className="text-red-500 text-sm">{errors.YourName}</span>
@@ -227,9 +226,8 @@ const TravelForm = () => {
             name="currentCountry"
             value={formData.currentCountry}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.currentCountry ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.currentCountry ? "border-red-500" : "border-gray-300"
+              } rounded`}
           >
             <option value="">Select Country</option>
             {countries.map((country) => (
@@ -254,9 +252,8 @@ const TravelForm = () => {
             name="from"
             value={formData.from}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.from ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.from ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.from && (
             <span className="text-red-500 text-sm">{errors.from}</span>
@@ -272,9 +269,8 @@ const TravelForm = () => {
             name="to"
             value={formData.to}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.to ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.to ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.to && (
             <span className="text-red-500 text-sm">{errors.to}</span>
@@ -290,16 +286,15 @@ const TravelForm = () => {
             name="journeyDate"
             value={formData.journeyDate}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.journeyDate ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.journeyDate ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.journeyDate && (
             <span className="text-red-500 text-sm">{errors.journeyDate}</span>
           )}
         </div>
-      {/* Conditionally render the return date field */}
-        
+        {/* Conditionally render the return date field */}
+
         {/* <div className="mb-4">
           <label htmlFor="returnDate" className="block mb-1">
             Return Date (optional):
@@ -313,7 +308,7 @@ const TravelForm = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div> */}
-        
+
         <div className="mb-4">
           <label htmlFor="airlines" className="block mb-1">
             Airlines:
@@ -324,9 +319,8 @@ const TravelForm = () => {
             name="airlines"
             value={formData.airlines}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.airlines ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.airlines ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.airlines && (
             <span className="text-red-500 text-sm">{errors.airlines}</span>
@@ -342,9 +336,8 @@ const TravelForm = () => {
             name="contactNumber"
             value={formData.contactNumber}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.contactNumber ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.contactNumber ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.contactNumber && (
             <span className="text-red-500 text-sm">{errors.contactNumber}</span>
@@ -360,9 +353,8 @@ const TravelForm = () => {
             name="instagramprofile"
             value={formData.instagramprofile}
             onChange={handleChange}
-            className={`w-full p-2 border ${
-              errors.instagramprofile ? "border-red-500" : "border-gray-300"
-            } rounded`}
+            className={`w-full p-2 border ${errors.instagramprofile ? "border-red-500" : "border-gray-300"
+              } rounded`}
           />
           {errors.instagramprofile && (
             <span className="text-red-500 text-sm">{errors.instagramprofile}</span>

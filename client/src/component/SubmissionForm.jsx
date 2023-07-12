@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../App.css"
 
 const HomePage = () => {
   const [submittedData, setSubmittedData] = useState([]);
@@ -7,25 +8,29 @@ const HomePage = () => {
     to: "",
     currentCountry: "",
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
+    setLoading(false);
+    
   }, [filterOptions]);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("https://iamtraveling.vercel.app/api/submissions");
+      const response = await fetch("http://localhost:5000/api/submissions");
       if (response.ok) {
         const data = await response.json();
-        const filteredData = data.filter((data)=>{
-          if(
+        const filteredData = data.filter((data) => {
+          if (
             (filterOptions.from !== "" && data.from !== filterOptions.from) ||
-      (filterOptions.to !== "" && data.to !== filterOptions.to) ||
-      (filterOptions.currentCountry !== "" &&
-        data.currentCountry !== filterOptions.currentCountry)
-          ){return false;} return true;
+            (filterOptions.to !== "" && data.to !== filterOptions.to) ||
+            (filterOptions.currentCountry !== "" &&
+              data.currentCountry !== filterOptions.currentCountry)
+          ) { return false; } return true;
+          
         })
-        filteredData.sort((a,b)=> new Date(a.journeyDate)-new Date(b.journeyDate))
+        filteredData.sort((a, b) => new Date(a.journeyDate) - new Date(b.journeyDate))
         setSubmittedData(filteredData);
       } else {
         console.log("Failed to fetch form data");
@@ -47,17 +52,17 @@ const HomePage = () => {
 
   const getAvailableOptions = (field) => {
     const options = new Set();
-    submittedData.forEach((data)=>{ 
+    submittedData.forEach((data) => {
       options.add(data[field]);
     })
     return Array.from(options)
   }
 
-  const handleResetFilters=()=>{
+  const handleResetFilters = () => {
     setFilterOptions({
-      from:"",
-      to:"",
-      currentCountry:"",
+      from: "",
+      to: "",
+      currentCountry: "",
     })
   }
 
@@ -77,7 +82,7 @@ const HomePage = () => {
         >
           <option value="">All</option>
           {/* Add options for available "from countries" */}
-          {getAvailableOptions('from').map((option)=>(
+          {getAvailableOptions('from').map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
@@ -93,7 +98,7 @@ const HomePage = () => {
         >
           <option value="">All</option>
           {/* Add options for available "from countries" */}
-          {getAvailableOptions('to').map((option)=>(
+          {getAvailableOptions('to').map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
@@ -109,7 +114,7 @@ const HomePage = () => {
         >
           <option value="">All</option>
           {/* Add options for available "from countries" */}
-          {getAvailableOptions('currentCountry').map((option)=>(
+          {getAvailableOptions('currentCountry').map((option) => (
             <option key={option} value={option}>{option}</option>
           ))}
         </select>
@@ -117,6 +122,31 @@ const HomePage = () => {
 
       </div>
 
+{loading ? (
+  <div className="flex items-center justify-center h-60">
+    {/* <div className="animate-pulse bg-gray-300 h-20 w-80 rounded-md"></div> */}
+    
+    <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+
+    </div>
+):(
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {submittedData.map((data) => (
           <div
@@ -158,8 +188,9 @@ const HomePage = () => {
           </div>
         ))}
       </div>
+      )}
     </div>
-    
+
   );
 };
 

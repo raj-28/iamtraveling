@@ -9,12 +9,12 @@ const Menu = () => {
     >
       Home
     </Link>
-    <a
-      href="#"
+    <Link
+      to="#"
       className="disable block md:inline-block px-3 py-2 rounded-md text-orange-500	 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
     >
       I Have Accomodation
-    </a>
+    </Link>
     <Link
       to="iamtraveling"
       className="block md:inline-block px-3 py-2 rounded-md text-blue-600	 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
