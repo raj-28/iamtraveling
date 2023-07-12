@@ -142,9 +142,9 @@ const HomePage = () => {
               <p className="mb-1">
                 <b>Journey Date:</b> {new Date(data.journeyDate).toLocaleDateString()}
               </p>
-              <p className="mb-1">
+              {/* <p className="mb-1">
                 <b>Return Date:</b> {new Date(data.returnDate).toLocaleDateString()}
-              </p>
+              </p> */}
               <p className="mb-1">
                 <b>Airlines:</b> {data.airlines}
               </p>
