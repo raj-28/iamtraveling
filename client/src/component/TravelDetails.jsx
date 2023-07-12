@@ -337,7 +337,7 @@ const TravelForm = () => {
             Contact Number:(Only Give Whatsapp Number)
           </label>
           <input
-            type="tel"
+            type="text"
             id="contactNumber"
             name="contactNumber"
             value={formData.contactNumber}
@@ -355,7 +355,7 @@ const TravelForm = () => {
             Connect on instagram (For Ex: @master__raj)
           </label>
           <input
-            type="tel"
+            type="text"
             id="instagramprofile"
             name="instagramprofile"
             value={formData.instagramprofile}
