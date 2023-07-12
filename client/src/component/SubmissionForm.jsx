@@ -151,6 +151,9 @@ const HomePage = () => {
               <p className="mb-1">
                 <b>Contact Number:</b> {data.contactNumber}
               </p>
+              <p className="mb-1">
+                <b>Connect on Instagram:</b> {data.instagramprofile}
+              </p>
             </div>
           </div>
         ))}

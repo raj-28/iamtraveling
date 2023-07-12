@@ -9,6 +9,7 @@ const submissionSchema = new mongoose.Schema({
             returnDate: Date,
             airlines: String,
             contactNumber: Number,
+            instagramprofile: String,
 });
 
 module.exports = mongoose.model('Submission', submissionSchema);

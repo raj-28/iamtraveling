@@ -13,6 +13,7 @@ const TravelForm = () => {
     returnDate: "",
     airlines: "",
     contactNumber: "",
+    instagramprofile:"",
   });
 
   const [errors, setErrors] = useState({});
@@ -68,6 +69,7 @@ const TravelForm = () => {
             returnDate: "",
             airlines: "",
             contactNumber: "",
+            instagramprofile:"",
             submitted:true,
           });
           
@@ -108,8 +110,14 @@ const TravelForm = () => {
       errors.airlines = "Airlines field is required";
     }
     if (formData.contactNumber.trim() === "") {
-      errors.contactNumber = "Contact number is required";
+      if(formData.instagramprofile.trim() ===""){
+        errors.contactNumber="Please Provide either a contact number or an Instagram Profile"
+      }
+      // errors.contactNumber = "Contact number is required";
     }
+    // if (!formData.contactNumber && !formData.instagramprofile) {
+    //   errors.message = "Please Provide either a contact number or an Instagram Profile";
+    // }
     // Add more validations based on your requirements
     return errors;
   };
@@ -167,11 +175,18 @@ const TravelForm = () => {
         break;
       case "contactNumber":
         if (value.trim() === "") {
-          fieldErrors[fieldName] = "Contact number is required";
+          fieldErrors[fieldName] = "Please Provide either a contact number or an Instagram Profile";
         } else if (!/^\d+$/.test(value)) {
           fieldErrors[fieldName] = "Contact Number Should contain Only Numbers";
         }
         break;
+      case "instagramprofile":
+        if (value.trim() === "") {
+          fieldErrors[fieldName] = "Please Provide either a contact number or an Instagram Profile";
+        } else {
+          fieldErrors[fieldName] = null;
+        }
+      break;
       // Add more field-specific validations
       default:
         break;
@@ -283,6 +298,8 @@ const TravelForm = () => {
             <span className="text-red-500 text-sm">{errors.journeyDate}</span>
           )}
         </div>
+      {/* Conditionally render the return date field */}
+        
         <div className="mb-4">
           <label htmlFor="returnDate" className="block mb-1">
             Return Date (optional):
@@ -296,6 +313,7 @@ const TravelForm = () => {
             className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
+        
         <div className="mb-4">
           <label htmlFor="airlines" className="block mb-1">
             Airlines:
@@ -323,6 +341,24 @@ const TravelForm = () => {
             id="contactNumber"
             name="contactNumber"
             value={formData.contactNumber}
+            onChange={handleChange}
+            className={`w-full p-2 border ${
+              errors.contactNumber ? "border-red-500" : "border-gray-300"
+            } rounded`}
+          />
+          {errors.contactNumber && (
+            <span className="text-red-500 text-sm">{errors.contactNumber}</span>
+          )}
+        </div>
+        <div className="mb-4">
+          <label htmlFor="instagramprofile" className="block mb-1">
+            Connect on instagram (For Ex: @master__raj)
+          </label>
+          <input
+            type="tel"
+            id="instagramprofile"
+            name="instagramprofile"
+            value={formData.instagramprofile}
             onChange={handleChange}
             className={`w-full p-2 border ${
               errors.contactNumber ? "border-red-500" : "border-gray-300"
