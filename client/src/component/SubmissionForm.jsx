@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "../App.css"
 
 const HomePage = () => {
   const [submittedData, setSubmittedData] = useState([]);
@@ -10,15 +9,15 @@ const HomePage = () => {
   });
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     fetchData();
     setLoading(false);
-    
   }, [filterOptions]);
 
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/submissions");
+      const response = await fetch("https://iamtraveling.vercel.app/api/submissions");
       if (response.ok) {
         const data = await response.json();
         const filteredData = data.filter((data) => {
@@ -28,7 +27,6 @@ const HomePage = () => {
             (filterOptions.currentCountry !== "" &&
               data.currentCountry !== filterOptions.currentCountry)
           ) { return false; } return true;
-          
         })
         filteredData.sort((a, b) => new Date(a.journeyDate) - new Date(b.journeyDate))
         setSubmittedData(filteredData);
@@ -121,9 +119,8 @@ const HomePage = () => {
         <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mx-4" onClick={handleResetFilters}>Reset Filters</button>
 
       </div>
-
-{loading ? (
-  <div className="flex items-center justify-center h-60">
+      {loading ? (
+  <div className="flex items-center justify-center h-40">
     {/* <div className="animate-pulse bg-gray-300 h-20 w-80 rounded-md"></div> */}
     
     <div class="loader">
@@ -147,6 +144,7 @@ const HomePage = () => {
 
     </div>
 ):(
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
         {submittedData.map((data) => (
           <div
@@ -188,7 +186,7 @@ const HomePage = () => {
           </div>
         ))}
       </div>
-      )}
+)}
     </div>
 
   );
