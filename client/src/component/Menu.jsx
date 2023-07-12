@@ -11,21 +11,21 @@ const Menu = () => {
     </Link>
     <a
       href="#"
-      className="disable block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+      className="disable block md:inline-block px-3 py-2 rounded-md text-orange-500	 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
     >
-      Features
+      I Have Accomodation
     </a>
     <Link
       to="iamtraveling"
-      className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+      className="block md:inline-block px-3 py-2 rounded-md text-blue-600	 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
     >
-      iamTravelling
+      Add Your Travel
     </Link>
     <a
       href="#"
-      className="disable block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+      className="disable block md:inline-block px-3 py-2 rounded-md text-lime-500		hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
     >
-      Contact
+      Contact-Us
     </a>
   </div>
 }
