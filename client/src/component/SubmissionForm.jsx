@@ -13,6 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     fetchData();
     setLoading(false);
+    
   }, [filterOptions]);
 
   const fetchData = async () => {
@@ -121,25 +122,15 @@ const HomePage = () => {
       </div>
       {loading ? (
   <div className="flex items-center justify-center h-40">
-    {/* <div className="animate-pulse bg-gray-300 h-20 w-80 rounded-md"></div> */}
-    
     <div class="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+  <div class="wrapper">
+    <div class="circle"></div>
+    <div class="line-1"></div>
+    <div class="line-2"></div>
+    <div class="line-3"></div>
+    <div class="line-4"></div>
+  </div>
+</div>
 
 
     </div>
